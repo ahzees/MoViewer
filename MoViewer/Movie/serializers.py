@@ -1,8 +1,8 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
 from Movie.models import *
 from rest_framework import serializers
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 
 class MovieSerializer(serializers.Serializer):
     description = serializers.CharField()
@@ -15,10 +15,10 @@ class MovieSerializer(serializers.Serializer):
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.description = validated_data.get('description', instance.description)
-        instance.name = validated_data.get('name',instance.name)
-        instance.video = validated_data.get('video',instance.video)
-        instance.images = validated_data.get('images',instance.images)
-        instance.year = validated_data.get('year',instance.year)
+        instance.description = validated_data.get("description", instance.description)
+        instance.name = validated_data.get("name", instance.name)
+        instance.video = validated_data.get("video", instance.video)
+        instance.images = validated_data.get("images", instance.images)
+        instance.year = validated_data.get("year", instance.year)
         instance.save()
         return instance

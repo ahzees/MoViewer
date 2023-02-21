@@ -7,4 +7,3 @@ class CommetsSerializers(serializers.Serializer):
     movie = serializers.CharField()
     comment = serializers.CharField(max_length=250)
     created_at = serializers.DateTimeField()
-
