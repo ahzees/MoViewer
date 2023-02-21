@@ -1,0 +1,71 @@
+{% extends 'authentication/base.html' %}
+{% load static %}
+{% block main %}
+<div align="center">
+    <div align="" class="">
+        <div class="flex3-container">
+            <div class="content3-container">
+            <div class="form3-container">
+        <form>
+        <label for="site-search" style="font-size: 25px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;font-family: -apple-system, BlinkMacSystemFont, sans-serif;color: white">Search in the site:</label>
+        <input type="search" id="site-search" name="q">
+        <button>Search</button>
+        </form>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    <div class="flex2-container" align="left">
+            <div class="content2-container">
+            <div class="form2-container" align="left">
+            <form method="get" action="{% url 'filter' %}" name="filter">
+                {% for i in categories %}
+                    <li class="editContent">
+                    <div class="ab">
+                    <input type="checkbox" name="category" value="{{ i.name }}">
+                    <span >{{ i.name }}</span>
+                        </div>
+                    </li>
+                {% endfor %}
+                {% for i in years %}
+                    <li class="editContent">
+                    <div class="ab">
+                    <input type="checkbox" name="year" value="{{ i.year }}">
+                    <span >{{ i.year }}</span>
+                        </div>
+                    </li>
+            {% endfor %}
+            <button type="submit">Search!</button>
+            </form>
+            </div>
+            </div>
+    </div>
+
+        {% for item in posts%}
+            <div class="flex1-container">
+            <div class="content1-container">
+            <div class="form1-container">
+                <a href="{{ item.get_absolute_url }}"><h1>{{ item.name }}</h1></a>
+            <span class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
+            {% if item.images %}
+                <a href="{{ item.get_absolute_url }}"><img src="{{ item.images.url }}" width="263" height="400" align="left"></a>
+                <span class="ab">{{ item.year.year }}</span>
+            {% endif %}
+            <div>
+                {% for i in item.category.all %}
+                <div class="ab">{{ i }}</div>
+                    {% endfor %}
+            </div>
+            </span>
+              </div>
+                </div>
+            </div>
+            </div>
+        {% endfor   %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'authentication/base.html' %}
+{% load static %}
+{% block main %}
+
+        <div align="center">
+            <div align="center">
+                <h1>{{ item.name }}</h1>
+                <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
+                    <video class="card-image-top" width="720" height="360" controls>
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                    <div class="card-body">
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="container mt-5 mb-5" style="display: inline-flex;" align="center">
+            <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+            <script type="application/json" src="{% static 'authentication/js/script.js' %}"></script>
+            <div class="fnt-like">
+                <a
+                    href="{% url 'like_movie' item.slug %}"><button class="like-btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button></a>{{item.like.count }}
+            </div>
+            <div class="fnt-dislike">
+                <a
+                    href="{% url 'dislike_movie' item.slug %}"><button class="like-btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button></a>{{item.dislike.count }}
+            </div>
+        </div>
+                <div style="width: 70vh; background: #e0e0e0; border-radius: 10px; display: block; box-shadow:  0 0 7px 1px rgba(60,60,60,0.4);align-items: center">
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="{{ request.user.images }}" width="38">
+                        <form method="post">
+                            {% csrf_token %}
+                            <label>
+                                <input type="text" placeholder="Add comment" style="color: #1b1b1b" name="comment">
+                            </label>
+                            <button class="btn btn-primary" type="submit">Comment</button>
+                            </form>
+                    </div>
+                    {% for comment in comments %}
+                    <div
+                        class="commented-section mt-2">
+                        <div class="d-flex flex-row align-items-center commented-user">
+                            <h5 class="mr-2">{{comment.user.first_name}} {{comment.user.last_name}}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.created_at }}</span></div>
+                        <div class="comment-text-sm"><span>{{ comment.comment }}</span></div>
+                        <div
+                            class="reply-section">
+                            </div>
+                </div>
+                    {% endfor %}
+            </div>
+    </div>
+    </div>
+{% endblock %}

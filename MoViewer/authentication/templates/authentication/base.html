@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="uk">
+<head>
+
+    <link type="text/css" href="{% static 'authentication/css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <meta charset="UTF-8">
+    <title>moViewer</title>
+</head>
+
+<body>
+
+
+<nav>
+  <ul class="menu">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'all_films' %}">All Films</a></li>
+      {% if request.user.is_authenticated %}
+    <li><a class="active" href="{% url 'logout'%}">Logout</a></li>
+    <li><a class="active" href="{% url 'my_profile'%}">My Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+      {% endif %}
+
+  </ul>
+</nav>
+
+
+{% block main %}
+{% endblock %}
+    <div align="center">
+    {% for message in messages %}
+        <h3 style="color: #006b1b" align="center">{{ message }}</h3>
+    {% endfor %}
+</div>
+</body>
+</html>
