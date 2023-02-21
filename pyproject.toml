@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "MoViewer"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["ahzees <matviy.stets@gmail.com>"]
 readme = "README.md"
@@ -20,7 +20,7 @@ commitizen = "^2.42.0"
 
 [tool.commitizen]
 name = "cz_customize"
-version = "0.1.0"
+version = "0.1.1"
 tag_format = "v$version"
 update_changelog_on_bump = true
 version_files = [
