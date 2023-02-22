@@ -8,6 +8,9 @@ def main():
     """Run administrative tasks."""
     import os
 
+    import dotenv
+
+    dotenv.read_dotenv()
     os.environ["DJANGO_SETTINGS_MODULE"] = "MoViewer.settings"
     try:
         from django.core.management import execute_from_command_line

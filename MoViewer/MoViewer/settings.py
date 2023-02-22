@@ -15,19 +15,19 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
 # print('---',Path(__file__).resolve().parent.parent)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-63w^#^q23mf#7v%6ic#$^sm(k4+o_-he2r7@^)rrr_erq!-79+"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
+    "127.0.0.1",
 ]
 # Application definitiong
 
@@ -84,10 +84,10 @@ WSGI_APPLICATION = "MoViewer.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "PORT": "5432",
+        "NAME": os.environ.get("NAME"),
+        "USER": os.environ.get("USER"),
+        "PASSWORD": os.environ.get("PASSWORD"),
+        "PORT": os.environ.get("PORT"),
     }
 }
 
@@ -137,5 +137,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 MEDIA_URL = "media/"
-MEDIA_ROOT = "/Users/matvijstec/Documents/MoViewer/MoViewer/media"
+MEDIA_ROOT = os.environ.get("MEDIA_ROOT")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
