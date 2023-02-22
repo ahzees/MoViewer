@@ -1,3 +1,14 @@
+## v0.1.2 (2023-02-22)
+
+
+- Merge pull request #1 from ahzees/matviystets-env
+- hotfix: created .env file
+- hotfix: created .env file [Task]: moviewer-ci-cd-5
+- [Description list]
+fix: created .env file and used python-dotenv
+- [Notes]
+<notes>
+
 ## v0.1.1 (2023-02-21)
 
 
