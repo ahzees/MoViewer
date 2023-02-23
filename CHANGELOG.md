@@ -1,3 +1,15 @@
+## v0.1.3 (2023-02-23)
+
+
+- hotfix: fixed .env in .gitignore
+- [Task]: moviewer-ci-cd-6
+
+[Description list]
+fix: added .env ti .gitignore
+
+[Notes]
+<notes>
+
 ## v0.1.2 (2023-02-22)
 
 
